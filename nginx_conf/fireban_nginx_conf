@@ -1,0 +1,85 @@
+upstream fireban {
+        #server localhost:8080;
+        server unix:///home/webmaster/fireban/run/gunicorn.sock;
+}
+
+server {
+	listen 80;
+        server_name fireban;
+        expires -1d;
+	#add_header 'Access-Control-Allow-Origin' '*';
+	root /var/www;
+
+
+	#location /lewis/.+\.php$ {
+	#	root /var/www/html;
+	#	include snippets/fastcgi-php.conf;
+	#	fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+	#	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	#	include fastcgi_params; fastcgi_read_timeout 300;
+	#}
+	location /assets/ {
+		alias /var/www/html/assets/;
+	}
+
+
+	location /api {
+		proxy_pass http://fireban;
+                proxy_pass_header server;
+                proxy_redirect off;
+                #add_header 'Access-Control-Allow-Origin' '*';
+                proxy_set_header Host $host;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header REMOTE_ADDR $remote_addr;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Scheme $scheme;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+                proxy_cache_bypass $http_upgrade;
+	}
+
+	location / {
+		root /home/webmaster/front/build;
+		index index.html index.htm;
+		try_files $uri /index.html;
+	}
+	location /record {
+		root /var/www;
+	}
+	location /output {
+		root /var/www;
+	}
+
+	location ~ ^/api/stream/live/.+\.ts$ {
+            # MPEG-TS segments can be cached upstream indefinitely
+		add_header 'Access-Control-Allow-Origin' '*';
+            	expires max;
+        }
+	location ~ ^/api/stream/live/[^/]+/index\.m3u8$ {
+            # Don't cache live HLS manifests
+		add_header 'Access-Control-Allow-Origin' '*';
+            	expires -1d;
+        }
+
+	location ~ ^/api/stream/tic/.+\.ts$ {
+            # MPEG-TS segments can be cached upstream indefinitely
+                add_header 'Access-Control-Allow-Origin' '*';
+                expires max;
+        }
+        location ~ ^/api/stream/tic/[^/]+/index\.m3u8$ {
+            # Don't cache live HLS manifests
+                add_header 'Access-Control-Allow-Origin' '*';
+                expires -1d;
+        }
+
+
+
+	location /static/admin {
+                alias /home/webmaster/fireban/static/admin;
+        }
+
+        location /media/ {
+                alias /home/webmaster/fireban/media/;
+        }
+}
