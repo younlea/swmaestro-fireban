@@ -3,6 +3,7 @@
 ```
 chmod 744 init_sh.sh
 ./init_sh.sh
+//에러 발생시 한번 더 실행해주고 DB와 Backend 설치 후 gunicorn restart 해주면 동작합니다.
 ```
 
 # DB Setup
@@ -34,6 +35,7 @@ service gunicorn restart
 cd /home/webmaster/front
 yarn add package
 yarn build -p
+//노드 버전 에러 뜰텐데 무시하시면 됩니다.
 ```
 
 
