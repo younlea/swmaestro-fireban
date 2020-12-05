@@ -59,3 +59,4 @@ echo Y | sudo mv ./fireban /home/webmaster
 echo Y | sudo mv ./front /home/webmaster
 echo Y | sudo mv ./stream /home/webmaster
 echo Y | sudo mkdir /home/webmaster/fireban/run
+echo Y | sudo service gunicorn restart
