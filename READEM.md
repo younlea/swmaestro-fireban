@@ -5,7 +5,7 @@ chmod 744 init_sh.sh
 ./init_sh.sh
 ```
 
-# mysql setup
+# db setup
 ```
 mysql -uroot -p
 // mysql 접속
