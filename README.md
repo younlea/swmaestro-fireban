@@ -22,7 +22,7 @@ GRANT ALL PRIVILEGES ON fireban.* to fireban@'%' IDENTIFIED BY 'fireban12#$';
 cd /home/webmaster/fireban
 pip3 install mysqlclient
 pip3 install -r requirement.txt
-python3 manage.py makemigraions
+python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py createsuperuser
 // 어드민 계정 생성 id, 이름, password 입력
