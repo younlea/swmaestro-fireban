@@ -49,7 +49,7 @@ echo Y | sudo mkdir /var/www/api/stream/tic
 echo Y | sudo chown -R www-data /var/www/api/stream
 echo Y | sudo mv ./nginx_conf/fireban_nginx_conf /etc/nginx/sites-available/
 echo Y | sudo mv ./nginx_conf/nginx.conf /etc/nginx/
-echo Y | sudo ln -s /etc/nginx/sites-available/fireban_nginx_conf /etc/nginx/sites-enable/
+echo Y | sudo ln -s /etc/nginx/sites-available/fireban_nginx_conf /etc/nginx/sites-enabled/
 echo Y | sudo rm /etc/nginx/sites-enabled/default
 echo Y | sudo rm /etc/nginx/sites-available/default
 echo Y | sudo service nginx restart
