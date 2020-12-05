@@ -1,11 +1,11 @@
-# server setup
+# Serer Setup
 
 ```
 chmod 744 init_sh.sh
 ./init_sh.sh
 ```
 
-# db setup
+# DB Setup
 ```
 mysql -uroot -p
 // mysql 접속
@@ -17,7 +17,7 @@ GRANT ALL PRIVILEGES ON fireban.* to fireban@‘%’ IDENTIFIED BY ‘fireban12#
 //fireban database 접속 계정 생성
 ```
 
-# back-end
+# Back-End
 ```
 cd /home/webmaster/fireban
 pip3 install mysqlclient
@@ -29,7 +29,7 @@ python3 manage.py createsuperuser
 service gunicorn restart
 ```
 
-# front
+# Front-End
 ```
 cd /home/webmaster/front
 yarn add package
@@ -37,7 +37,7 @@ yarn build -p
 ```
 
 
-# 서버 재시작시
+# [IMPORTANT] Server Reboot
 ```
 service gunicorn restart
 // 꼭 서버 재식작시 실행해줘야 backend가 제대로 동작함.
