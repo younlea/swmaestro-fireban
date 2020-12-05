@@ -38,17 +38,18 @@ echo Y | sudo mkdir /var/www/record/stream
 echo Y | sudo chown -R www-data /var/www/record
 echo Y | sudo mkdir /var/www/detect
 echo Y | sudo chmod -R 777 /var/www/detect
-echo Y | sudo mkdir /var/www/ouput
-echo Y | sudo mkdir /var/www/ouput/origin
-echo Y | sudo mkdir /var/www/ouput/result
-echo Y | sudo chmod -R 777 /var/www/ouput
+echo Y | sudo mkdir /var/www/output
+echo Y | sudo mkdir /var/www/output/origin
+echo Y | sudo mkdir /var/www/output/result
+echo Y | sudo chmod -R 777 /var/www/output
+echo Y | sudo mkdir /var/www/api
 echo Y | sudo mkdir /var/www/api/stream
 echo Y | sudo mkdir /var/www/api/stream/live
 echo Y | sudo mkdir /var/www/api/stream/tic
 echo Y | sudo chown -R www-data /var/www/api/stream
 echo Y | sudo mv ./nginx_conf/fireban_nginx_conf /etc/nginx/sites-available/
 echo Y | sudo mv ./nginx_conf/nginx.conf /etc/nginx/
-echo Y | sudo ln -s /etc/nginx/sites-available/fireban_nginx_conf /etc/nginx/site-enable/
+echo Y | sudo ln -s /etc/nginx/sites-available/fireban_nginx_conf /etc/nginx/sites-enable/
 echo Y | sudo rm /etc/nginx/sites-enabled/default
 echo Y | sudo rm /etc/nginx/sites-available/default
 echo Y | sudo service nginx restart
