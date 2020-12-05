@@ -59,4 +59,6 @@ echo Y | sudo mv ./fireban /home/webmaster
 echo Y | sudo mv ./front /home/webmaster
 echo Y | sudo mv ./stream /home/webmaster
 echo Y | sudo mkdir /home/webmaster/fireban/run
+pip3 install gunicorn
+pip3 install Django gunicorn
 echo Y | sudo service gunicorn restart
