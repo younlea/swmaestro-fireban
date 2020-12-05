@@ -12,7 +12,7 @@ mysql -uroot -p
 CREATE DATABASE fireban default character set utf8 collate utf8_unicode_ci;
 
 // fireban database 생성
-GRANT ALL PRIVILEGES ON fireban.* to fireban@‘%’ IDENTIFIED BY ‘fireban12#$’;
+GRANT ALL PRIVILEGES ON fireban.* to fireban@'%' IDENTIFIED BY 'fireban12#$';
 
 //fireban database 접속 계정 생성
 ```
